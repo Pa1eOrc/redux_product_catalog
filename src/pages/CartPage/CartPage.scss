@@ -1,0 +1,111 @@
+@import "../../styles/utils/vars";
+@import "../../styles/utils/mixins";
+
+.carts {
+  position: relative;
+  padding: 0 0 56px;
+  width: 100vw;
+  flex: 1;
+  margin: 0 auto;
+
+  @include onDesctop {
+    width: 1200px;
+  }
+
+  @include onTablet {
+    padding: 0 0 64px;
+  }
+
+  @include onDesctop {
+    padding: 0 0 80px;
+  }
+
+  &__title {
+    padding: 24px 0 0 16px;
+
+    @include onTablet {
+      padding: 16px 0 0 24px;
+    }
+
+    @include onDesctop {
+      padding: 16px 0 0 32px;
+    }
+  }
+
+  &__main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+    padding: 24px 16px 0;
+
+    @include onTablet {
+      padding: 32px 24px 0;
+    }
+
+    @include onDesctop {
+      flex-direction: row;
+      padding: 32px 32px 0;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__qauntity {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 206px;
+    border: 1px solid $elements;
+    padding: 24px;
+    box-sizing: border-box;
+
+    @include onDesctop {
+      width: 368px;
+    }
+  }
+
+  &__total-price-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $elements;
+  }
+
+  &__button {
+    width: 100%;
+    height: 48px;
+    background-color: $primary;
+    color: $white;
+
+    &__button:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__notification {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 40vh;
+    left: 16px;
+    right: 16px;
+    height: 200px;
+    background-color: $red;
+    border: 1px solid $white;
+    opacity: 0;
+    font-size: 30px;
+    color: $white;
+
+    &--active {
+      opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,258 @@
+.navbar {
+  height: calc(100% - 64px);
+  padding-top: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: $white;
+  position: absolute;
+  left: 0;
+  right: 0;
+
+  z-index: 0;
+  opacity: 0;
+  transform: translateY(-110%);
+  transition: all 0.5s ease-in-out;
+
+  &--active {
+    opacity: 1;
+    z-index: 2;
+    transform: translateY(0);
+  }
+
+  @include onTablet {
+    padding: 0 0 0 16px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 32px;
+    height: 47px;
+    flex: 1;
+
+    position: relative;
+    transform: translateY(0);
+    opacity: 1;
+    z-index: 2;
+  }
+
+  @include onDesctop {
+    height: 63px;
+    padding: 0 0 0 24px;
+  }
+
+  &__first-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include onTablet {
+      flex-direction: row;
+    }
+  }
+
+  &__second-list {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    width: 100vw;
+
+    border-top: 1px solid $elements;
+    border-bottom: 1px solid $elements;
+
+    @include onTablet {
+      border-top: none;
+      border-bottom: none;
+    }
+
+    &::after {
+      @include onMobile {
+        position: absolute;
+        content: "";
+        height: 64px;
+        width: 1px;
+        background-color: $elements;
+      }
+    }
+
+    @include onTablet {
+      width: min-content;
+    }
+  }
+
+  &__item {
+    padding: 8px;
+    width: min-content;
+    transition: all 0.3s ease-in-out;
+
+    @include onTablet {
+      height: min-content;
+      padding: 21px 8px 8px;
+    }
+
+    @include onDesctop {
+      padding: 28px 16px 24px;
+    }
+
+    color: $secondary;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+
+    &--icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50vw;
+      height: 64px;
+      position: relative;
+
+      &:hover {
+        background-color: $hover;
+      }
+
+      @include onTablet {
+        width: 48px;
+        height: 47px;
+        padding: 0;
+        border-left: 1px solid $elements;
+      }
+
+      @include onDesctop {
+        width: 64px;
+        height: 63px;
+      }
+    }
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+
+    &--active > .navbar__item--link {
+      color: $primary;
+
+      &::after {
+        position: absolute;
+        top: 25px;
+        left: 8px;
+        right: 8px;
+        content: "";
+        height: 2px;
+        background-color: $primary;
+        pointer-events: none;
+        z-index: 1;
+
+        @include onTablet {
+          top: 46px;
+        }
+
+        @include onDesctop {
+          height: 3px;
+          top: 61px;
+          left: 16px;
+          right: 16px;
+        }
+      }
+    }
+
+    &--active > .navbar__item--icon {
+      &::after {
+        position: absolute;
+        top: 63px;
+        left: 0;
+        right: 0;
+        content: "";
+        height: 2px;
+        background-color: $primary;
+        pointer-events: none;
+        z-index: 1;
+
+        @include onTablet {
+          top: 46px;
+        }
+
+        @include onDesctop {
+          height: 3px;
+          top: 61px;
+        }
+      }
+    }
+
+    &:hover > .navbar__item {
+      color: $primary;
+    }
+  }
+
+  &__quantity {
+    position: absolute;
+    top: 18px;
+    right: calc(25vw - 14px);
+    background-color: $red;
+    color: $white;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    font-size: 9px;
+    text-align: center;
+    line-height: 15px;
+
+    @include onTablet {
+      top: 9px;
+      right: 9px;
+    }
+
+    @include onDesctop {
+      top: 16px;
+      right: 16px;
+    }
+  }
+
+  &__search {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 500;
+
+    &::placeholder {
+      color: $icons;
+    }
+
+    @include onDesctop {
+      font-size: 14px;
+    }
+  }
+
+  &__search-container {
+    display: none;
+    align-items: center;
+    width: 300px;
+    padding: 21px 24px;
+    border-left: 1px solid $elements;
+    cursor: text;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-color: $hover;
+
+      &,
+      .header__search {
+        background-color: $hover;
+      }
+    }
+
+    @include onDesctop {
+      display: flex;
+    }
+  }
+
+  &__clear-button {
+    border: none;
+    background-color: inherit;
+  }
+}

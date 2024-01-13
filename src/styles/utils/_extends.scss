@@ -1,0 +1,44 @@
+@import "./vars";
+
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Bold.otf") format("opentype");
+  src: url("/fonts/Mont-Regular.otf") format("opentype");
+  src: url("/fonts/Mont-SemiBold.otf") format("opentype");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Mont", sans-serif;
+  color: $primary;
+  scroll-behavior: smooth;
+}
+
+button {
+  border: none;
+  outline: none;
+  background-color: #fff;
+  padding: 0;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    color: $primary;
+  }
+}
+
+li {
+  list-style: none;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}

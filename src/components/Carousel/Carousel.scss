@@ -1,0 +1,26 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/mixins.scss";
+
+.carousel {
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 24px 0 0 16px;
+
+  @include onTablet {
+    padding: 24px 0 64px 16px;
+  }
+
+  @include onDesctop {
+    padding: 24px 0 80px 16px;
+  }
+
+  &__item {
+    padding-right: 16px;
+    transition: all 0.7s ease-in-out;
+  }
+
+  &__item:last-child {
+    padding-right: 0;
+  }
+}

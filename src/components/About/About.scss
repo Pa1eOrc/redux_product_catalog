@@ -1,0 +1,60 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/mixins.scss";
+
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 80px 16px 0;
+
+  @include onTablet {
+    padding: 64px 24px 0;
+  }
+
+  @include onDesctop {
+    padding: 80px 32px 0;
+    flex-direction: row;
+  }
+
+  &__description {
+    width: 100%;
+
+    @include onDesctop {
+      width: 560px;
+    }
+  }
+
+  &__description-title {
+    padding: 32px 0 16px;
+  }
+
+  &__tech {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 56px;
+
+    @include onDesctop {
+      width: 512px;
+      padding-top: 0;
+    }
+
+    &--container {
+      padding-top: 32px;
+    }
+  }
+
+  &__title {
+    padding-bottom: 16px;
+    border-bottom: 1px solid $elements;
+  }
+
+  &__text {
+    color: $secondary;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+  }
+}

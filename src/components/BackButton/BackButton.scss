@@ -1,0 +1,31 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/mixins.scss";
+
+.back {
+  display: flex;
+  align-items: center;
+  padding: 21px 0 0 16px;
+
+  @include onTablet {
+    padding: 37px 0 0 24px;
+  }
+
+  @include onDesctop {
+    padding: 40px 0 0 32px;
+  }
+
+  &__button {
+    border: none;
+    background-color: $white;
+    color: $secondary;
+    padding: 2px 0 0 4px;
+
+    @include onDesctop {
+      padding: 0 0 0 4px;
+    }
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}

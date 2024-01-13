@@ -1,0 +1,146 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/mixins.scss";
+
+.options {
+  width: 100%;
+
+  &__container {
+    padding-bottom: 24px;
+    border-bottom: 1px solid $elements;
+
+    &--capacity {
+      padding-top: 24px;
+    }
+  }
+
+  &__select-container {
+    width: 100%;
+    padding-top: 8px;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__color-label {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid $elements;
+    background-color: $white;
+
+    &:hover {
+      border-color: $primary;
+      cursor: pointer;
+    }
+
+    &--selected {
+      border-color: $primary;
+    }
+  }
+
+  &__color {
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    left: 2px;
+    right: 2px;
+    display: flex;
+    border-radius: 50%;
+
+    @include onDesctop {
+      top: 3px;
+      left: 3px;
+    }
+
+    &--black {
+      background-color: #000;
+    }
+
+    &--rosegold {
+      background-color: #b76e79;
+    }
+
+    &--silver {
+      background-color: #c0c0c0;
+    }
+
+    &--purple {
+      background-color: #800080;
+    }
+
+    &--spacegray {
+      background-color: #717378;
+    }
+
+    &--white {
+      background-color: #fff;
+      border: 1px solid $elements;
+    }
+
+    &--yellow {
+      background-color: #ff0;
+    }
+
+    &--coral {
+      background-color: #ff7f50;
+    }
+
+    &--red {
+      background-color: $red;
+    }
+
+    &--gold {
+      background-color: #ffd700;
+    }
+
+    &--midnightgreen {
+      background-color: #004953;
+    }
+
+    &--green {
+      background-color: $green;
+    }
+
+    &--sec {
+      background-color: $secondary;
+    }
+
+    &--pink {
+      background-color: #ffc0cd;
+    }
+
+    &--skyblue {
+      background-color: #87ceeb;
+    }
+
+    &--midnight {
+      background-color: #000e34;
+    }
+  }
+
+  &__capacity {
+    background-color: $white;
+    color: $primary;
+    transition: all 0.2s ease-in-out;
+
+    text-transform: uppercase;
+    padding: 7px 8px 4px;
+    border: 1px solid $icons;
+
+    &:hover {
+      border-color: $secondary;
+      cursor: pointer;
+    }
+
+    &--selected {
+      border-color: $primary;
+      background-color: $primary;
+      color: $white;
+    }
+  }
+
+  &__input {
+    display: none;
+  }
+}

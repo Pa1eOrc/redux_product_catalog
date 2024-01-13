@@ -1,0 +1,26 @@
+@import "../../styles/utils/mixins.scss";
+
+.product-list {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr;
+  gap: 40px;
+
+  @include grid2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 16px;
+  }
+
+  @include grid3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include onDesctop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+  }
+}

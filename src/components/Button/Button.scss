@@ -1,0 +1,77 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/mixins.scss";
+
+.button {
+  padding-top: 16px;
+  display: flex;
+  gap: 8px;
+
+  &__add {
+    background-color: $primary;
+    color: $white;
+    height: 40px;
+    transition: all 0.3s ease-in-out;
+
+    @include onMobile {
+      width: 100px;
+    }
+
+    @include onTablet {
+      width: 125px;
+    }
+
+    @include onDesctop {
+      width: 160px;
+    }
+
+    &--details {
+      width: 231px;
+      height: 48px;
+
+      @include onTablet {
+        width: 180px;
+      }
+
+      @include onDesctop {
+        width: 263px;
+      }
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+      transform: scale(105%);
+    }
+
+    &--selected {
+      border: 1px solid $elements;
+      background-color: $white;
+      color: $green;
+
+      &:hover {
+        border-color: $primary;
+      }
+    }
+  }
+
+  &__fav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $white;
+    border: 1px solid $icons;
+    width: 40px;
+    height: 40px;
+    transition: all 0.3s ease-in-out;
+
+    &--details {
+      width: 48px;
+      height: 48px;
+    }
+
+    &:hover {
+      border-color: $primary;
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+      transform: scale(105%);
+    }
+  }
+}

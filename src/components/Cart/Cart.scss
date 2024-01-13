@@ -1,0 +1,102 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/mixins.scss";
+
+.cart {
+  display: block;
+  align-items: center;
+  border: 1px solid $elements;
+  padding: 16px;
+
+  @include onTablet {
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+    gap: 24px;
+  }
+
+  @include onDesctop {
+    min-width: 752px;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include onTablet {
+      gap: 24px;
+    }
+
+    &:first-child {
+      padding-bottom: 16px;
+
+      @include onTablet {
+        padding: 0;
+      }
+    }
+  }
+
+  &__cross-container {
+    height: min-content;
+  }
+
+  &__name-container {
+    width: 128px;
+  }
+
+  &__img-container {
+    width: 80px;
+    height: 80px;
+    box-sizing: content-box;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    padding: 7px;
+    flex-shrink: 0;
+    object-fit: contain;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    outline: none;
+    background-color: $white;
+    border: 1px solid $icons;
+
+    &:hover {
+      border-color: $primary;
+    }
+
+    &--cross {
+      border: none;
+      width: 16px;
+      height: 16px;
+    }
+
+    &--minus {
+      border-color: $elements;
+      pointer-events: none;
+    }
+  }
+
+  &__button-container {
+    display: flex;
+  }
+
+  &__count {
+    padding: 5.5px 0;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+  }
+
+  &__price {
+    height: 31px;
+    padding-left: 43px;
+  }
+}

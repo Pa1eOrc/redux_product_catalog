@@ -1,0 +1,86 @@
+.text {
+  color: $primary;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+
+  &--uppercase {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 12px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+  }
+
+  &--gray {
+    color: $secondary;
+  }
+
+  &--small {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  &--strikethrough {
+    text-decoration: line-through;
+  }
+
+  &--h1 {
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -0.48px;
+    line-height: 56px;
+
+    @include onMobile {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.32px;
+    }
+  }
+
+  &--h2 {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.32px;
+
+    @include onMobile {
+      font-size: 22px;
+      line-height: 140%;
+    }
+  }
+
+  &--h2-strikethrough {
+    font-size: 22px;
+    font-weight: 600;
+    text-decoration: line-through;
+    color: $secondary;
+    line-height: normal;
+  }
+
+  &--h3 {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+
+    @include onMobile {
+      font-size: 20px;
+    }
+  }
+
+  &--h4 {
+    font-size: 20px;
+
+    @include onMobile {
+      font-size: 16px;
+    }
+  }
+
+  &--price {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+  }
+}

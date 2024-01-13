@@ -1,0 +1,64 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/mixins";
+
+.footer {
+  padding: 32px 16px;
+  border-top: 1px solid $elements;
+
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include onTablet {
+    flex-direction: row;
+    justify-content: space-between;
+    vertical-align: middle;
+    padding: 24px;
+  }
+
+  @include onDesctop {
+    padding: 24px 32px;
+  }
+
+  &__link-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include onTablet {
+      flex-direction: row;
+      align-items: center;
+      gap: 32px;
+    }
+  }
+
+  &__link {
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &__button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icons;
+    background-color: $white;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &__button:hover {
+    border-color: $primary;
+  }
+}
