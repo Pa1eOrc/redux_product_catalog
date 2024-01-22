@@ -1,4 +1,4 @@
-const BASE_URL = 'https://Pa1eOrc.github.io/product_catalog/api/';
+const BASE_URL = "https://Pa1eOrc.github.io/redux_product_catalog/api/";
 
 function wait(delay: number) {
   return new Promise(resolve => {
