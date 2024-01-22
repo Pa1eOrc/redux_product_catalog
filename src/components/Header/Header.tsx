@@ -2,20 +2,20 @@ import cn from "classnames";
 
 import { NavLink, useLocation, useSearchParams } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
-
-import "./Header.scss";
 import { getSearchWith } from "../../helpers/utils/getSearchWith";
 import { SearchParams } from "../../type/SearchParams";
 import { useAppSelector } from "../../app/hooks";
 import debounce from "debounce";
 
+import "./Header.scss";
+
 export const Header = () => {
   const { product } = useAppSelector((state) => state.selectedProduct);
   const { carts } = useAppSelector((state) => state.cartsPage);
   const { favourites } = useAppSelector((state) => state.favouriteProducts);
+  const { query } = useAppSelector((state) => state.searhParams);
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
-  const query = searchParams.get("query") || "";
 
   const links = ["phones", "tablets", "accessories", "favourites"];
   const isHomePage = location.pathname === "/";
@@ -31,19 +31,13 @@ export const Header = () => {
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     cn("navbar__link", { "navbar__link--active": isActive });
 
-  // const setDebounceSearchWidth = debounce((paramsToUpdate: SearchParams) => {
-  //   const search = getSearchWith(searchParams, paramsToUpdate);
-
-  //   setSearchParams(search);
-  // }, 500);
-
   const setDebounceSearchWidth = useCallback(
     debounce((paramsToUpdate: SearchParams) => {
       const search = getSearchWith(searchParams, paramsToUpdate);
 
       setSearchParams(search);
-    }, 1000),
-    [searchParams, location.pathname]
+    }, 500),
+    [searchParams, getSearchWith]
   );
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -6,7 +6,7 @@ export function getSearchWith(
 ): string {
   const newParams = new URLSearchParams(
     currrentParams.toString(),
-  );
+  );  
 
   Object.entries(paramsToUpdate)
     .forEach(([key, value]) => {
@@ -17,7 +17,7 @@ export function getSearchWith(
       }
     });
 
-  if (paramsToUpdate.sort || paramsToUpdate.perPage) {
+  if (paramsToUpdate.sort || paramsToUpdate.perPage || paramsToUpdate.query) {
     newParams.delete('page');
   }
 

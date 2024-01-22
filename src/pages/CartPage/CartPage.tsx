@@ -6,7 +6,7 @@ import { Product } from "../../type/Product";
 import { getTotalPrice } from "../../helpers/utils/getTotalPrice";
 import { BackButton } from "../../components/BackButton";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as cartsPageActions from "../../features/CartsPage/cartsPageSlice";
 
 import "./CartPage.scss";
@@ -62,6 +62,12 @@ export const CartPage = () => {
       setIsMessage(false);
     }, 1000);
   };
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, []);
 
   return (
     <section className="carts">

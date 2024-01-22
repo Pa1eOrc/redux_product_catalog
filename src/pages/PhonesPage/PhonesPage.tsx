@@ -1,4 +1,3 @@
-import { useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
 import { Loader } from "../../components/Loader";
 import { Dropdown } from "../../components/Dropdown";
@@ -8,7 +7,6 @@ import { NoResults } from "../../components/NoResults";
 import { SortProducts } from "../../helpers/utils/sortProducts";
 import { NoSearchResults } from "../../components/NoSearchResults";
 import { BreadCrumbs } from "../../components/BreadCrumbs";
-import { getSearchWith } from "../../helpers/utils/getSearchWith";
 import * as phonesPageActions from "../../features/PhonesPage/phonesPageSlice";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { DropdownIterface } from "../../type/Dropdown";
@@ -25,6 +23,7 @@ export const PhonesPage = () => {
   const { phones, loaded, hasError } = useAppSelector(
     (state) => state.phonesPage
   );
+  const { sort, perPage, page, query } = useAppSelector(state => state.searhParams);
 
   const sortDropdown: DropdownIterface = {
     name: "sort",
@@ -46,12 +45,6 @@ export const PhonesPage = () => {
     },
     isOpen: false,
   };
-
-  const [searchParams, setSearchParams] = useSearchParams();
-  const page = +(searchParams.get("page") || 1);
-  const sort = searchParams.get("sort") || "age";
-  const perPage = searchParams.get("perPage") || "16";
-  const query = searchParams.get("query") || "";
 
   const sortedPhones = SortProducts(phones, sort, query);
   const totalLength = sortedPhones.length;
@@ -82,18 +75,6 @@ export const PhonesPage = () => {
 
     return <ProductList productsForCurrentPage={productsForCurrentPage} />;
   };
-
-  useEffect(() => {
-    if (page === 1) {
-      setSearchParams(getSearchWith(searchParams, { page: null }));
-    }
-  }, [page, searchParams, setSearchParams]);
-
-  useEffect(() => {
-    if (query) {
-      setSearchParams(getSearchWith(searchParams, { page: null }));
-    }
-  }, [query]);
 
   useEffect(() => {
     window.scrollTo({

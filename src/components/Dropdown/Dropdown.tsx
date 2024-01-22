@@ -89,7 +89,9 @@ export const Dropdown: React.FC<Props> = ({
                   className={classNames("dropdown__link", {
                     "dropdown__link--selected": value === currentValue,
                   })}
-                  onClick={handleClick}
+                  onClick={() => {
+                    handleClick();
+                  }}
                 >
                   {key}
                 </Link>

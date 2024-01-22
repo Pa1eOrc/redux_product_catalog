@@ -2,17 +2,16 @@ import { ProductList } from "../../components/ProductList";
 import { SortProducts } from "../../helpers/utils/sortProducts";
 import { NoSearchResults } from "../../components/NoSearchResults";
 import { BreadCrumbs } from "../../components/BreadCrumbs";
-import { useSearchParams } from "react-router-dom";
 import { useAppSelector } from "../../app/hooks";
 
 import "../../styles/block/page.scss";
+import { useEffect } from "react";
 
 export const FavouritesPage = () => {
   const { favourites } = useAppSelector((state) => state.favouriteProducts);
-  const [searchParams] = useSearchParams();
-  const query = searchParams.get("query") || "";
+  const { query } = useAppSelector((state) => state.searhParams);
   const sortedFavourites = SortProducts(favourites, "", query);
-  const { length } = favourites;  
+  const { length } = favourites;
 
   const renderContext = () => {
     if (length === 0) {
@@ -25,6 +24,12 @@ export const FavouritesPage = () => {
 
     return <ProductList productsForCurrentPage={sortedFavourites} />;
   };
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, []);
 
   return (
     <section className="page">
