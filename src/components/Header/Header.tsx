@@ -1,11 +1,11 @@
 import cn from "classnames";
+import debounce from "debounce";
 
 import { NavLink, useLocation, useSearchParams } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
 import { getSearchWith } from "../../helpers/utils/getSearchWith";
 import { SearchParams } from "../../type/SearchParams";
 import { useAppSelector } from "../../app/hooks";
-import debounce from "debounce";
 
 import "./Header.scss";
 
