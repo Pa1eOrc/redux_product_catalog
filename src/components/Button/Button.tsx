@@ -16,18 +16,18 @@ export const Button: React.FC<Props> = ({ name, product }) => {
     const { favourites } = useAppSelector((state) => state.favouriteProducts);
     const { carts } = useAppSelector(state => state.cartsPage);
 
-  const isProductInCart = isProductAdded(carts, product.id);
-  const isProductInFavourites = isProductAdded(favourites, product.id);
+  const isProductInCart = isProductAdded(carts, product.itemId);
+  const isProductInFavourites = isProductAdded(favourites, product.itemId);
 
   const handleButtonClick = (e: React.MouseEvent, action: string) => {
     e.preventDefault();
 
     if (action === "cart") {
-      dispatch(cartsPageActions.add({product}))
+      dispatch(cartsPageActions.togle({product}))
     }
 
     if (action === "favourites") {
-      dispatch(favouritesPageActions.add({product}))
+      dispatch(favouritesPageActions.togle({product}))
     }
   };
 

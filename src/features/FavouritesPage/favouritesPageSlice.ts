@@ -25,7 +25,7 @@ const favouritesPageSlice = createSlice({
   name: "favourites",
   initialState,
   reducers: {
-    add: (state, action: PayloadAction<{ product: Product }>) => {
+    togle: (state, action: PayloadAction<{ product: Product }>) => {
       const { product } = action.payload; 
       const updatedProducts = getArrayUpdates(state.favourites, product);
 
@@ -40,5 +40,5 @@ const favouritesPageSlice = createSlice({
   },
 });
 
-export const { add } = favouritesPageSlice.actions;
+export const { togle } = favouritesPageSlice.actions;
 export default favouritesPageSlice.reducer;

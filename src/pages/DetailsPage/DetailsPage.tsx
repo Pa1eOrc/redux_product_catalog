@@ -32,7 +32,7 @@ export const DetailsPage = () => {
   const { price, fullPrice, screen, image, ram, name, category, itemId } =
     product;
 
-  const suggestedProducts = filterProductsById(products, itemId);  
+  const suggestedProducts = filterProductsById(products, itemId).slice(0, 12);  
 
   useEffect(() => {
     if (productId && products) {

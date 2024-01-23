@@ -7,18 +7,18 @@ export function getArrayLength(array: Product[], perPage: number) {
 }
 
 export function isProductAdded(productsToCheck: Product[], id: string) {
-  return productsToCheck.some((product) => product.id === id);
+  return productsToCheck.some((product) => product.itemId === id);
 }
 
 export function getArrayUpdates(
   productsToUpdare: Product[],
   productToCheck: Product
 ) {
-  const productIsAdded = isProductAdded(productsToUpdare, productToCheck.id);
+  const productIsAdded = isProductAdded(productsToUpdare, productToCheck.itemId);
   let updatedProducts = [];
 
   if (productIsAdded) {
-    updatedProducts = filterProductsById(productsToUpdare, productToCheck.id);
+    updatedProducts = filterProductsById(productsToUpdare, productToCheck.itemId);
   } else {
     updatedProducts = [...productsToUpdare, productToCheck];
   }

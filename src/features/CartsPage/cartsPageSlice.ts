@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { Product } from "../../type/Product";
+import { getArrayUpdates } from "../../helpers/utils/functions";
 
 type CartsPageState = {
   carts: Product[];
@@ -23,6 +24,14 @@ const cartsPageSlice = createSlice({
   name: "carts",
   initialState,
   reducers: {
+    togle: (state, action: PayloadAction<{ product: Product }>) => {
+            const { product } = action.payload;
+            const updatedProducts = getArrayUpdates(state.carts, product);
+
+            state.carts = updatedProducts;
+            localStorage.setItem("favourites", JSON.stringify(updatedProducts));
+    },
+
     add: (state, action: PayloadAction<{ product: Product }>) => {
       const { product } = action.payload;
       const updatedCarts = [...state.carts, product];
@@ -38,10 +47,7 @@ const cartsPageSlice = createSlice({
       localStorage.setItem("carts", JSON.stringify(updatedCarts));
     },
 
-    deletaAll: (
-      state,
-      action: PayloadAction<{ updatedCarts: Product[] }>
-    ) => {
+    deletaAll: (state, action: PayloadAction<{ updatedCarts: Product[] }>) => {
       const { updatedCarts } = action.payload;
 
       state.carts = updatedCarts;
@@ -55,5 +61,5 @@ const cartsPageSlice = createSlice({
   },
 });
 
-export const { add, take, deletaAll } = cartsPageSlice.actions;
+export const { add, take, deletaAll, togle } = cartsPageSlice.actions;
 export default cartsPageSlice.reducer;
