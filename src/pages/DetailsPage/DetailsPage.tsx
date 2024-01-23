@@ -15,6 +15,7 @@ import * as detailsPageActions from "../../features/DetailsPage/detailsPageSlice
 import * as selectedProductActions from "../../features/SelectedProduct/selectedProductSlice";
 
 import "./DetailsPage.scss";
+import { filterProductsById } from "../../helpers/utils/sortHelperFunctions";
 
 export const DetailsPage = () => {
   const { productId } = useParams();
@@ -28,10 +29,10 @@ export const DetailsPage = () => {
     (state) => state.detailsPage
   );
 
-  const suggestedProducts = products;
-
   const { price, fullPrice, screen, image, ram, name, category, itemId } =
     product;
+
+  const suggestedProducts = filterProductsById(products, itemId);  
 
   useEffect(() => {
     if (productId && products) {
@@ -207,7 +208,7 @@ export const DetailsPage = () => {
 
             <div className="details__info-container">
               <div className="details__price-container">
-                <p className="text text--h2">{`$${fullPrice}`}</p>
+                <p className="text text--h2">{`$${price}`}</p>
 
                 <p
                   className={classNames(
@@ -217,7 +218,7 @@ export const DetailsPage = () => {
                     "text--gray"
                   )}
                 >
-                  {`$${price}`}
+                  {`$${fullPrice}`}
                 </p>
               </div>
 

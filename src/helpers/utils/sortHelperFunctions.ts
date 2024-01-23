@@ -40,7 +40,5 @@ export function filterProductsByCategory(
 export function filterProductsById(
   products: Product[], id: string,
 ) {
-  return products.filter(
-    product => product.id !== id,
-  );
+  return products.filter((product) => product.itemId !== id).slice(0, 12);
 }

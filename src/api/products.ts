@@ -11,7 +11,7 @@ export const getHotPriceProducts = (products: Product[]) => {
   const sortedProducts = sortFunction
     .sortProductsByAbsoluteDiscount(filteredProducts);
 
-  return sortedProducts;
+  return sortedProducts.slice(0, 12);
 };
 
 export const getBrandNewProducts = (products: Product[]) => {
@@ -20,7 +20,7 @@ export const getBrandNewProducts = (products: Product[]) => {
   const filteredProductsByPrice = sortFunction
     .sortProductsByPrice(filteredProductsByAge);
 
-  return filteredProductsByPrice;
+  return filteredProductsByPrice.slice(0, 12);
 };
 
 export const getSuggestedProducts = (
