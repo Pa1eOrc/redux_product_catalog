@@ -22,7 +22,7 @@ export const Carousel: React.FC<Props> = ({ products, currentSlide, id }) => {
 
       element.style.transform = `translateX(-${currentSlide * itemWidth}px)`;
     });
-  }, [currentSlide]);
+  }, [currentSlide, id, itemWidth]);
 
   return (
     <ul className="carousel">

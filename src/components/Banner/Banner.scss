@@ -7,73 +7,75 @@
   flex-direction: column;
   align-items: center;
 
-  @include onDesctop {
-    padding: 0 32px;
-  }
+  // @include onDesctop {
+  //   padding: 0 32px;
+  // }
 
-  &__carousel-container {
-    display: flex;
-    justify-content: space-between;
-    width: inherit;
+  // &__carousel-container {
+  //   display: flex;
+  //   justify-content: space-between;
+  //   width: inherit;
 
-    @include onTablet {
-      display: grid;
-      grid-template-columns: (32px 1fr 32px);
-      gap: 19px;
-    }
+  //   @include onTablet {
+  //     display: grid;
+  //     grid-template-columns: (32px 1fr 32px);
+  //     gap: 19px;
+  //   }
 
-    @include onDesctop {
-      gap: 16px;
-      height: 400px;
-    }
-  }
+  //   @include onDesctop {
+  //     gap: 16px;
+  //     height: 400px;
+  //   }
+  // }
 
-  &__arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    border: 1px solid $icons;
-    box-sizing: border-box;
-    background-color: $white;
-    transition: all 0.3s ease;
+  // &__arrow {
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   width: 32px;
+  //   border: 1px solid $icons;
+  //   box-sizing: border-box;
+  //   background-color: $white;
+  //   transition: all 0.3s ease;
 
-    @include onMobile {
-      display: none;
-    }
+  //   @include onMobile {
+  //     display: none;
+  //   }
 
-    &:hover {
-      border-color: $primary;
-    }
-  }
+  //   &:hover {
+  //     border-color: $primary;
+  //   }
+  // }
 
-  &__carousel {
-    width: inherit;
-    height: 100vw;
-    max-height: 400px;
-    display: flex;
-    overflow: hidden;
-    position: relative;
+  // &__carousel {
+  //   width: inherit;
+  //   height: 100vw;
+  //   max-height: 400px;
+  //   display: flex;
+  //   overflow: hidden;
+  //   position: relative;
 
-    @include onTablet {
-      height: 30vw;
-    }
+  //   @include onTablet {
+  //     height: 30vw;
+  //   }
 
-    @include onDesctop {
-      height: 400px;
-    }
-  }
+  //   @include onDesctop {
+  //     height: 400px;
+  //   }
+  // }
 
   &__link {
     display: flex;
-    position: absolute;
+    // position: absolute;
     width: 100vw;
     height: 100vw;
     max-height: 400px;
-    transition: all 0.7s ease-in-out;
-    transform: translateX(100%);
-    z-index: -1;
-    opacity: 0;
+    display: flex;
+    justify-content: center;
+    // transition: all 0.7s ease-in-out;
+    // transform: translateX(100%);
+    // z-index: -1;
+    // opacity: 0;
 
     @include onTablet {
       height: 30vw;
@@ -81,21 +83,22 @@
 
     @include onDesctop {
       height: 400px;
+      width: 1200px;
     }
 
-    &--active {
-      z-index: 1;
-      opacity: 1;
-      transform: translateX(0);
-    }
+    // &--active {
+    //   z-index: 1;
+    //   opacity: 1;
+    //   transform: translateX(0);
+    // }
 
-    &--next {
-      transform: translateX(100%);
-    }
+    // &--next {
+    //   transform: translateX(100%);
+    // }
 
-    &--prev {
-      transform: translateX(-100%);
-    }
+    // &--prev {
+    //   transform: translateX(-100%);
+    // }
   }
 
   &__img {
@@ -107,30 +110,94 @@
     @include onTablet {
       width: 85vw;
       height: 30vw;
-      object-position: -25px 50%;
     }
 
     @include onDesctop {
-      width: 1136px;
+      width: 1124px;
       height: 400px;
     }
   }
 
-  &__dot-container {
-    display: flex;
-    gap: 14px;
-    width: 80px;
-    padding: 18px 5px 0;
+  // &__dot-container {
+  //   display: flex;
+  //   gap: 14px;
+  //   width: 80px;
+  //   padding: 18px 5px 0;
+  // }
+
+  // &__dot {
+  //   width: 14px;
+  //   height: 4px;
+  //   background-color: $elements;
+  //   transition: all 0.7s ease-in-out;
+
+  //   &--active {
+  //     background-color: $primary;
+  //   }
+  // }
+}
+
+.my-swiper {
+  width: 100%;
+}
+
+.my-swiper > .swiper-button-next {
+  border: 1px solid $icons;
+  height: 100%;
+  top: 0;
+  margin: 0;
+
+  background-image: url(../../img/Icons/Arrow_Right.svg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+
+  transition: all 0.3s ease;
+
+  @include onMobile {
+    display: none;
   }
 
-  &__dot {
-    width: 14px;
-    height: 4px;
-    background-color: $elements;
-    transition: all 0.7s ease-in-out;
-
-    &--active {
-      background-color: $primary;
-    }
+  @include onDesctop {
+    right: 0;
+    width: 32px;
   }
+
+  &:hover {
+    border-color: $primary;
+  }
+}
+
+.my-swiper > .swiper-button-prev {
+  border: 1px solid $icons;
+  height: 100%;
+  top: 0;
+  margin: 0;
+
+  background-image: url(../../img/Icons/Arrow_Left.svg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+
+  transition: all 0.3s ease;
+
+  @include onMobile {
+    display: none;
+  }
+
+  @include onDesctop {
+    left: 0;
+    width: 32px;
+  }
+
+  &:hover {
+    border-color: $primary;
+  }
+}
+
+.my-swiper > .swiper-pagination {
+  bottom: 0;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  display: none;
 }
