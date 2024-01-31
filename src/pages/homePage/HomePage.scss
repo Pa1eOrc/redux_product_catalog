@@ -18,11 +18,11 @@
     }
   }
 
-  &__banner {
-    @include onTablet {
-      padding: 0 24px;
-    }
-  }
+  // &__banner {
+  //   @include onTablet {
+  //     padding: 0 24px;
+  //   }
+  // }
 
   &__brand-new {
     padding: 56px 0 0;

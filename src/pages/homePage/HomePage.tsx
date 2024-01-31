@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import * as homePageActions from '../../features/HomePage/homePageSlice';
-import "./HomePage.scss";
 import { Banner } from "../../components/Banner";
 import { Category } from "../../components/Category";
 import { BrandNew } from "../../components/BrandNew";

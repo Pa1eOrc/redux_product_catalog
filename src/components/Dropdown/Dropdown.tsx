@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { getSearchWith } from "../../helpers/utils/getSearchWith";
 import { DropdownIterface } from "../../type/Dropdown";
@@ -27,22 +27,39 @@ export const Dropdown: React.FC<Props> = ({
   const [searchParams] = useSearchParams();
   const selectedOption = setCurrentOption(options, currentValue);
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setIsOpenState(false);
-      }
-    };
+  // useEffect(() => {
+  //   const handleClickOutside = (event: MouseEvent) => {
+  //     if (
+  //       dropdownRef.current &&
+  //       !dropdownRef.current.contains(event.target as Node)
+  //     ) {
+  //       setIsOpenState(false);
+  //     }
+  //   };
 
+  //   if (isOpenState) {
+  //     document.addEventListener("click", handleClickOutside);
+  //   } else {
+  //     document.removeEventListener("click", handleClickOutside);
+  //   }
+  // }, [isOpenState]);
+
+  const handleClickOutside = useCallback((event: MouseEvent) => {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target as Node)
+    ) {
+      setIsOpenState(false);
+    }
+  }, []);
+
+  useEffect(() => {
     if (isOpenState) {
       document.addEventListener("click", handleClickOutside);
     } else {
       document.removeEventListener("click", handleClickOutside);
     }
-  }, [isOpenState]);
+  }, [isOpenState, handleClickOutside]);
 
   const handleDropdownToggle = () => {
     setIsOpenState(!isOpenState);

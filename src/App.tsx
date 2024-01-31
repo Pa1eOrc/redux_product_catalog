@@ -18,12 +18,28 @@ const App = () => {
   const perPage = searchParams.get("perPage") || "16";
   const query = searchParams.get("query") || "";
 
+  // useEffect(() => {
+  //   dispatch(searchParamsActions.setPage({page}));
+  //   dispatch(searchParamsActions.setSort({sort}));
+  //   dispatch(searchParamsActions.setPerPage({perPage}));
+  //   dispatch(searchParamsActions.setQuery({query}));
+  // }, [dispatch, page, sort, perPage, query]);
+  
   useEffect(() => {
-    dispatch(searchParamsActions.setPage({page}));
-    dispatch(searchParamsActions.setSort({sort}));
-    dispatch(searchParamsActions.setPerPage({perPage}));
-    dispatch(searchParamsActions.setQuery({query}));
+    dispatch(searchParamsActions.setPage({ page }));
   }, [dispatch, page, sort, perPage, query]);
+
+  useEffect(() => {
+    dispatch(searchParamsActions.setSort({ sort }));
+  }, [dispatch, sort]);
+
+  useEffect(() => {
+    dispatch(searchParamsActions.setPerPage({ perPage }));
+  }, [dispatch, perPage]);
+
+  useEffect(() => {
+    dispatch(searchParamsActions.setQuery({ query }));
+  }, [dispatch, query]);
 
   useEffect(() => {
     dispatch(homePageActions.init());

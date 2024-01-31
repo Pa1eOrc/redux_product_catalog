@@ -4,6 +4,7 @@ import { Product } from "../../type/Product";
 import { Button } from "../Button";
 
 import "./ProductCard.scss";
+import { imgFormatFunction } from "../../helpers/utils/imgFormatFunction";
 
 type Props = {
   product: Product;
@@ -18,7 +19,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     capacity,
     ram,
     category,
-    image,
     itemId,
   } = product;
   const [searchParams] = useSearchParams();
@@ -27,21 +27,24 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     location.pathname === "/favourites"
       ? `/favourites/${itemId}`
       : `/${category}/${itemId}`;
-  const imgFormat = () => {
-    if (
-      itemId.includes("iphone-12") ||
-      itemId.includes("iphone-13") ||
-      itemId.includes("iphone-14")
-    ) {
-      return "img/phones/apple-iphone-7/black/00.jpg";
-    }
 
-    if (category === "phones") {
-      return image.replace(/\.webp$/, ".jpg");
-    }
+  // const imgFormat = () => {
+  //   if (
+  //     itemId.includes("iphone-12") ||
+  //     itemId.includes("iphone-13") ||
+  //     itemId.includes("iphone-14")
+  //   ) {
+  //     return "img/phones/apple-iphone-7/black/00.jpg";
+  //   }
 
-    return image;
-  };
+  //   if (category === "phones") {
+  //     return image.replace(/\.webp$/, ".jpg");
+  //   }
+
+  //   return image;
+  // };
+
+  const imgFormat = imgFormatFunction(product);
 
   return (
     <Link
@@ -55,7 +58,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <div className="product-card__img-container">
         <img
           className="product-card__img"
-          src={`${imgFormat()}`}
+          src={`${imgFormat}`}
           alt={itemId}
         />
       </div>

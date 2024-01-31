@@ -49,6 +49,7 @@ export const Header = () => {
 
   const clearInput = () => {
     setSearchParams(getSearchWith(searchParams, { query: null }));
+    setSearchParams(getSearchWith(searchParams, { page: null }))
     setInputValue("");
   };
 

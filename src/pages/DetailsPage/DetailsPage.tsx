@@ -1,7 +1,7 @@
 import classNames from "classnames";
 
 import { Link, useParams, useLocation } from "react-router-dom";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Loader } from "../../components/Loader";
 import { ProductSlider } from "../../components/ProductSlider";
 import { Carousel } from "../../components/Carousel";
@@ -16,6 +16,7 @@ import * as selectedProductActions from "../../features/SelectedProduct/selected
 
 import "./DetailsPage.scss";
 import { filterProductsById } from "../../helpers/utils/sortHelperFunctions";
+import { imgFormatFunction } from "../../helpers/utils/imgFormatFunction";
 
 export const DetailsPage = () => {
   const { productId } = useParams();
@@ -60,21 +61,7 @@ export const DetailsPage = () => {
     capacity,
   } = productDetails;
 
-  const imgFormat = useCallback(() => {
-    if (
-      itemId.includes("iphone-12") ||
-      itemId.includes("iphone-13") ||
-      itemId.includes("iphone-14")
-    ) {
-      return "img/phones/apple-iphone-7/black/00.jpg";
-    }
-
-    if (category === "phones") {
-      return image.replace(/\.webp$/, ".jpg");
-    }
-
-    return image;
-  }, [itemId, category, image]);
+  const imgFormat = imgFormatFunction(product)
 
   const imagesFormat = () => {
     if (
